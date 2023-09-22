@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox fx:id="mainVBOX" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainController">
+  <children>
+    <MenuBar VBox.vgrow="NEVER">
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#getImage" text="Open Image" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" onAction="#closeApp" text="Quit" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+    <SplitPane fx:id="splitPaneMain" dividerPositions="0.20837043633125554" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+      <items>
+        <AnchorPane prefHeight="541.0" prefWidth="195.0">
+          <children>
+                  <Button layoutX="14.0" layoutY="112.0" mnemonicParsing="false" onAction="#displayBWImage" prefHeight="46.0" prefWidth="157.0" text="Generate B&amp;W image" />
+                  <Slider fx:id="brightnessSlider" blockIncrement="0.1" layoutX="23.0" layoutY="502.0" majorTickUnit="0.1" max="1.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="0.5" />
+                  <Text layoutX="28.0" layoutY="498.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adjust brightness" />
+                  <Button layoutX="47.0" layoutY="221.0" mnemonicParsing="false" onAction="#randomColor" text="Random Color" />
+                  <Button layoutX="52.0" layoutY="315.0" mnemonicParsing="false" onAction="#drawCircles" text="Draw Circles" />
+                  <Text layoutX="28.0" layoutY="411.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ignore entities under:" />
+                  <Slider fx:id="sizeSlider" blockIncrement="0.1" layoutX="23.0" layoutY="414.0" majorTickUnit="1.0" max="10.0" min="1.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="0.5" />
+                  <Text layoutX="163.0" layoutY="444.0" strokeType="OUTSIDE" strokeWidth="0.0" text="px">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Text>
+                  <Label fx:id="imgNameLabel" layoutX="14.0" layoutY="20.0" text="Image:" />
+                  <Label fx:id="sizeLabel" layoutX="14.0" layoutY="45.0" text="Size:" />
+                  <Label fx:id="entityNoLabel" layoutX="13.0" layoutY="70.0" text="Number of entities:" />
+          </children>
+        </AnchorPane>
+        <ScrollPane prefHeight="-1.0" prefWidth="-1.0">
+          <content>
+            <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="540.0" prefWidth="702.0">
+              <children>
+                        <ImageView fx:id="mainImageContainer" fitHeight="340.0" fitWidth="340.0" layoutX="5.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="mainWritableImageContainer" fitHeight="340.0" fitWidth="340.0" layoutX="362.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true" />
+              </children>
+            </AnchorPane>
+          </content>
+        </ScrollPane>
+      </items>
+    </SplitPane>
+  </children>
+</VBox>
